@@ -1,5 +1,5 @@
 <?php
-    execute("UPDATE `db_version` SET `release` = '';
+    execute("UPDATE `db_version` SET `release` = `release`;
         -- 厂商数据表
         DROP TABLE IF EXISTS `company`;
         CREATE TABLE `company`
@@ -93,7 +93,6 @@ INSERT INTO `item` VALUES
             `time`                  INTEGER     NOT NULL DEFAULT 0      COMMENT '订单时间',
             `type`                  INTEGER     NOT NULL DEFAULT 0      COMMENT '订单类型:0进货|1出货',
             `company_god`           INTEGER     NOT NULL DEFAULT 0      COMMENT '订单对象:公司|顾客ID',
-            `time`                  INTEGER     NOT NULL DEFAULT 0      COMMENT '订单时间',
             CONSTRAINT `pk_order` PRIMARY KEY (`id`)
         )
         COMMENT       = '订单'
@@ -163,19 +162,5 @@ INSERT INTO `god` VALUES
     (1, 'ChenQiMing', '陈启明', '新社');
 
 
-        -- 顾客数据表
-        DROP TABLE IF EXISTS `god_data`;
-        CREATE TABLE `god_data`
-        (
-            `god_id`             BIGINT(25)  NOT NULL                COMMENT '玩家ID',
-            `ingot`                 INTEGER     NOT NULL DEFAULT 0      COMMENT '金币',
-            `charge_ingot`          INTEGER     NOT NULL DEFAULT 0      COMMENT '充值金币',
-            `coins`                 INTEGER     NOT NULL DEFAULT 0      COMMENT '铜钱',
-            CONSTRAINT `pk_god_data` PRIMARY KEY (`god_id`)
-        )
-        COMMENT       = '顾客就是上帝'
-        ENGINE        = 'InnoDB'
-        CHARACTER SET = 'utf8'
-        COLLATE       = 'utf8_general_ci';
     ");
 ?>

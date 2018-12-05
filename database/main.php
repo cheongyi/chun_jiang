@@ -194,7 +194,7 @@ function get_changes () {
 
 // @todo   获取某个路径下的文件
 function get_files_from_dir ($dir, &$changes) {
-    if ($handle = opendir($dir)) {
+    if ($handle = @opendir($dir)) {
         while (FALSE !== ($file = readdir($handle))) {
             if ($file == '.' || $file == '..' || is_dir($file)) {
                 continue;
